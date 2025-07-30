@@ -1,4 +1,4 @@
-import SecretsDemo from '@/components/SecretsDemo';
+import TabbedDemo from '@/components/TabbedDemo';
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
           </p>
         </div>
         
-        <SecretsDemo />
+        <TabbedDemo />
         
         <div className="mt-12 max-w-4xl mx-auto">
           <div className="bg-white rounded-lg shadow-md p-6">

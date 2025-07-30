@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 import { secretsManager } from '@/lib/secrets';
 
-export async function middleware(request: NextRequest) {
+export async function middleware() {
   // Initialize secrets on first request
   try {
     if (!secretsManager.isReady()) {

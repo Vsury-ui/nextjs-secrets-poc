@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSecrets } from '@/lib/secrets';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Get secrets (this will initialize them if not already done)
     const secrets = await getSecrets();

@@ -1,5 +1,3 @@
-import { Octokit } from '@octokit/rest';
-
 export interface AppSecrets {
   databaseUrl: string;
   apiKey: string;
@@ -47,6 +45,9 @@ class SecretsManager {
         throw new Error('GitHub configuration missing. Please set GITHUB_TOKEN, GITHUB_REPO_OWNER, and GITHUB_REPO_NAME');
       }
 
+      // Dynamic import to avoid Edge Runtime issues
+      const { Octokit } = await import('@octokit/rest');
+      
       const octokit = new Octokit({
         auth: githubToken,
       });
@@ -80,7 +81,7 @@ class SecretsManager {
 
     // Validate that all required secrets are present
     const missingSecrets = Object.entries(this.secrets)
-      .filter(([_, value]) => !value)
+      .filter(([, value]) => !value)
       .map(([key]) => key);
 
     if (missingSecrets.length > 0) {

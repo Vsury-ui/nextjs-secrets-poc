@@ -46,7 +46,7 @@ export default function SecretsDemo() {
       } else {
         setError(data.message || 'Failed to fetch secrets info');
       }
-    } catch (err) {
+    } catch {
       setError('Network error occurred');
     } finally {
       setLoading(false);
@@ -65,7 +65,7 @@ export default function SecretsDemo() {
       
       const data = await response.json();
       setApiResponse(data);
-    } catch (err) {
+    } catch {
       setApiResponse({ status: 'error', message: 'Network error occurred' });
     }
   };
@@ -82,7 +82,7 @@ export default function SecretsDemo() {
       
       const data = await response.json();
       setApiResponse(data);
-    } catch (err) {
+    } catch {
       setApiResponse({ status: 'error', message: 'Network error occurred' });
     }
   };

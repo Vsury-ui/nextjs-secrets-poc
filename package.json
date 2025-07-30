@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "docker:build": "docker build -t github-secrets-demo .",
+    "docker:run": "docker run -p 3000:3000 --env-file .env github-secrets-demo",
+    "docker:compose": "docker-compose up --build",
+    "docker:compose:down": "docker-compose down"
   },
   "dependencies": {
     "@octokit/rest": "^22.0.0",

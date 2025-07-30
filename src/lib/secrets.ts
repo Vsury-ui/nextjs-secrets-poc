@@ -36,13 +36,13 @@ class SecretsManager {
 
   private async loadFromGitHub(): Promise<void> {
     try {
-      const githubToken = process.env.GITHUB_TOKEN;
-      const repoOwner = process.env.GITHUB_REPO_OWNER;
-      const repoName = process.env.GITHUB_REPO_NAME;
-      const secretsPath = process.env.GITHUB_SECRETS_PATH || 'secrets.json';
+      const githubToken = process.env.REPO_ACCESS_TOKEN;
+      const repoOwner = process.env.REPO_OWNER;
+      const repoName = process.env.REPO_NAME;
+      const secretsPath = process.env.SECRETS_FILE_PATH || 'secrets.json';
 
       if (!githubToken || !repoOwner || !repoName) {
-        throw new Error('GitHub configuration missing. Please set GITHUB_TOKEN, GITHUB_REPO_OWNER, and GITHUB_REPO_NAME');
+        throw new Error('GitHub configuration missing. Please set REPO_ACCESS_TOKEN, REPO_OWNER, and REPO_NAME');
       }
 
       // Dynamic import to avoid Edge Runtime issues

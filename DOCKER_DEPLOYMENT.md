@@ -23,10 +23,10 @@ Before deploying with Docker, ensure you have:
 
 2. **Edit .env file with your values**
    ```env
-   GITHUB_TOKEN=your_github_personal_access_token
-   GITHUB_REPO_OWNER=your_github_username
-   GITHUB_REPO_NAME=your_repository_name
-   GITHUB_SECRETS_PATH=secrets.json
+   REPO_ACCESS_TOKEN=your_github_personal_access_token
+   REPO_OWNER=your_github_username
+   REPO_NAME=your_repository_name
+   SECRETS_FILE_PATH=secrets.json
    ```
 
 3. **Build and run with Docker Compose**
@@ -53,9 +53,9 @@ Before deploying with Docker, ensure you have:
    Or manually with environment variables:
    ```bash
    docker run -p 3000:3000 \
-     -e GITHUB_TOKEN=your_token \
-     -e GITHUB_REPO_OWNER=your_username \
-     -e GITHUB_REPO_NAME=your_repo \
+     -e REPO_ACCESS_TOKEN=your_token \
+     -e REPO_OWNER=your_username \
+     -e REPO_NAME=your_repo \
      -e NODE_ENV=production \
      github-secrets-demo
    ```
@@ -101,9 +101,9 @@ Excludes unnecessary files from the build context:
 3. **Deploy on any platform**
    ```bash
    docker run -p 3000:3000 \
-     -e GITHUB_TOKEN=your_token \
-     -e GITHUB_REPO_OWNER=your_username \
-     -e GITHUB_REPO_NAME=your_repo \
+     -e REPO_ACCESS_TOKEN=your_token \
+     -e REPO_OWNER=your_username \
+     -e REPO_NAME=your_repo \
      yourusername/github-secrets-demo:latest
    ```
 
@@ -150,7 +150,7 @@ Excludes unnecessary files from the build context:
      --platform managed \
      --region us-central1 \
      --allow-unauthenticated \
-     --set-env-vars GITHUB_TOKEN=your_token,GITHUB_REPO_OWNER=your_username,GITHUB_REPO_NAME=your_repo
+     --set-env-vars REPO_ACCESS_TOKEN=your_token,REPO_OWNER=your_username,REPO_NAME=your_repo
    ```
 
 ## 🔒 Security Best Practices
@@ -318,10 +318,10 @@ For Docker deployment issues:
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `GITHUB_TOKEN` | Yes | - | GitHub Personal Access Token |
-| `GITHUB_REPO_OWNER` | Yes | - | GitHub username or organization |
-| `GITHUB_REPO_NAME` | Yes | - | Repository name |
-| `GITHUB_SECRETS_PATH` | No | `secrets.json` | Path to secrets file in repo |
+| `REPO_ACCESS_TOKEN` | Yes | - | GitHub Personal Access Token |
+| `REPO_OWNER` | Yes | - | GitHub username or organization |
+| `REPO_NAME` | Yes | - | Repository name |
+| `SECRETS_FILE_PATH` | No | `secrets.json` | Path to secrets file in repo |
 | `NODE_ENV` | Yes | `production` | Environment mode |
 | `NEXT_TELEMETRY_DISABLED` | No | `1` | Disable Next.js telemetry |
 | `PORT` | No | `3000` | Application port |

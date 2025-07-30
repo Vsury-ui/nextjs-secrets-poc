@@ -9,10 +9,10 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - GITHUB_TOKEN=${GITHUB_TOKEN}
-      - GITHUB_REPO_OWNER=${GITHUB_REPO_OWNER}
-      - GITHUB_REPO_NAME=${GITHUB_REPO_NAME}
-      - GITHUB_SECRETS_PATH=${GITHUB_SECRETS_PATH:-secrets.json}
+      - REPO_ACCESS_TOKEN=${REPO_ACCESS_TOKEN}
+      - REPO_OWNER=${REPO_OWNER}
+      - REPO_NAME=${REPO_NAME}
+      - SECRETS_FILE_PATH=${SECRETS_FILE_PATH:-secrets.json}
       - NEXT_TELEMETRY_DISABLED=1
     restart: unless-stopped
     healthcheck:

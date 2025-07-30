@@ -23,10 +23,10 @@ Before deploying, ensure you have:
 In the Vercel project settings, add these environment variables:
 
 ```env
-GITHUB_TOKEN=your_github_personal_access_token
-GITHUB_REPO_OWNER=your_github_username
-GITHUB_REPO_NAME=your_repository_name
-GITHUB_SECRETS_PATH=secrets.json
+REPO_ACCESS_TOKEN=your_github_personal_access_token
+REPO_OWNER=your_github_username
+REPO_NAME=your_repository_name
+SECRETS_FILE_PATH=secrets.json
 NODE_ENV=production
 ```
 
@@ -121,10 +121,10 @@ docker build -t github-secrets-demo .
 
 # Run the container with environment variables
 docker run -p 3000:3000 \
-  -e GITHUB_TOKEN=your_token \
-  -e GITHUB_REPO_OWNER=your_username \
-  -e GITHUB_REPO_NAME=your_repo \
-  -e NODE_ENV=production \
+      -e REPO_ACCESS_TOKEN=your_token \
+    -e REPO_OWNER=your_username \
+    -e REPO_NAME=your_repo \
+    -e NODE_ENV=production \
   github-secrets-demo
 ```
 
@@ -160,10 +160,10 @@ docker push your-account.dkr.ecr.us-east-1.amazonaws.com/github-secrets-demo:lat
 
 | Variable | Required | Description | Example |
 |----------|----------|-------------|---------|
-| `GITHUB_TOKEN` | Yes | GitHub Personal Access Token | `ghp_xxxxxxxxxxxx` |
-| `GITHUB_REPO_OWNER` | Yes | GitHub username or organization | `yourusername` |
-| `GITHUB_REPO_NAME` | Yes | Repository name | `my-secrets-repo` |
-| `GITHUB_SECRETS_PATH` | No | Path to secrets file in repo | `secrets.json` |
+| `REPO_ACCESS_TOKEN` | Yes | GitHub Personal Access Token | `ghp_xxxxxxxxxxxx` |
+| `REPO_OWNER` | Yes | GitHub username or organization | `yourusername` |
+| `REPO_NAME` | Yes | Repository name | `my-secrets-repo` |
+| `SECRETS_FILE_PATH` | No | Path to secrets file in repo | `secrets.json` |
 | `NODE_ENV` | Yes | Environment mode | `production` |
 | `DEBUG` | No | Enable debug logging | `true` |
 
@@ -238,11 +238,11 @@ curl -X POST https://your-app.com/api/secrets \
 
 ```bash
 # Check environment variables
-echo $GITHUB_TOKEN
+echo $REPO_ACCESS_TOKEN
 
 # Test GitHub API access
-curl -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$GITHUB_REPO_OWNER/$GITHUB_REPO_NAME
+curl -H "Authorization: token $REPO_ACCESS_TOKEN" \
+  https://api.github.com/repos/$REPO_OWNER/$REPO_NAME
 
 # Check application logs
 docker logs your-container-name
